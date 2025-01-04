@@ -3,6 +3,9 @@ package com.scm.SmartContactManager.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.scm.SmartContactManager.forms.UserForm;
 
 @Controller
 public class PageController {
@@ -42,7 +45,24 @@ public class PageController {
     }
 
     @RequestMapping("/register")
-    public String register() {
+    public String register(Model model) {
+
+        UserForm userForm = new UserForm();
+        userForm.setName("Mohit");
+        model.addAttribute("userForm", userForm);
+
         return "register";
+    }
+
+    // Processing Register Form
+    @RequestMapping(value = "/do-register", method = RequestMethod.POST)
+    public String processRegister() {
+        // fetch the data
+        // send to model (make a userForm class & receive data there in an object )
+        // validate form data
+        // save to database
+        // message (Registration Successful)
+        // redirect to any page
+        return "redirect:/register";
     }
 }
